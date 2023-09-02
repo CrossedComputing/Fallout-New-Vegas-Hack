@@ -2,19 +2,23 @@
 #include <Windows.h>
 #include <TlHelp32.h>
 #include "InternalFunctions.h"
+#include "Address.h"
 
 
 DWORD WINAPI mainThread(LPVOID moduleHandle)
 {
     FILE* f = InternalFunctions::createConsole();
 
+    FloatAddress writableX(0x1873FFE0);
+
+
 
     while (true)
     {
-
+        writableX.printValue();
 
         // So we can break from the infinite loop
-        if (GetAsyncKeyState(VK_ESCAPE) & 1) break;
+        if (GetAsyncKeyState(VK_INSERT) & 1) break;
 
         Sleep(10);
     }
