@@ -9,6 +9,10 @@ class Address
 {
 protected:
 	uintptr_t address;
+public:
+	Address();
+	Address(uintptr_t memoryAddress);
+	uintptr_t getAddress();
 };
 
 class IntAddress : Address {

@@ -1,6 +1,23 @@
 #include "Address.h"
 
 
+// BASE
+// Default constructor
+Address::Address() {
+	this->address = 0xDEADBEEF;
+}
+
+// Main Constructor
+Address::Address(uintptr_t memoryAddress) {
+	this->address = memoryAddress;
+}
+
+
+uintptr_t Address::getAddress() {
+	return this->address;
+}
+
+
 /*
 * INT
 */
