@@ -17,7 +17,7 @@ public:
 
 class IntAddress : Address {
 public:
-
+	IntAddress();
 	IntAddress(uintptr_t address);
 
 	int getValue();
@@ -27,9 +27,9 @@ public:
 	void printValue();
 };
 
-class FloatAddress : Address {
+class FloatAddress : public Address {
 public:
-
+	FloatAddress();
 	FloatAddress(uintptr_t address);
 
 	float getValue();

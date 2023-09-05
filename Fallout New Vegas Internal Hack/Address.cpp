@@ -21,6 +21,7 @@ uintptr_t Address::getAddress() {
 /*
 * INT
 */
+IntAddress::IntAddress() { this->address = 0xDEADBEEF; }
 IntAddress::IntAddress(uintptr_t address) {
 	this->address = address;
 }
@@ -41,6 +42,7 @@ void IntAddress::printValue() {
 /*
 * FLOAT
 */
+FloatAddress::FloatAddress() { this->address = 0xDEADBEEF; }
 FloatAddress::FloatAddress(uintptr_t address) {
 	this->address = address;
 }

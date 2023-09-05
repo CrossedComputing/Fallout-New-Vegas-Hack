@@ -1,21 +1,24 @@
 #pragma once
 #include <Windows.h>
 #include "Address.h"
-
+#include <vector>
+#include "InternalFunctions.h"
 
 class Character
 {
 private:
+	std::vector<unsigned int> headCoordinateOffsets;
+	std::vector<unsigned int> healthOffsets;
+
 	Address BaseAddress;
-	Address writableXCoordinateAddress;
-	Address writableYCoordinateAddress;
-	Address writableZCoordinateAddress;
-	Address NameAddress;
-	Address hostileAddress;
-	Address healthAddress;
-	Address headXCoordinateAddress;
-	Address headYCoordinateAddress;
-	Address headZCoordinateAddress;
+	FloatAddress xCoordinateAddress;
+	FloatAddress yCoordinateAddress;
+	FloatAddress zCoordinateAddress;
+	IntAddress hostileAddress;
+	FloatAddress healthAddress;
+	FloatAddress headXCoordinateAddress;
+	FloatAddress headYCoordinateAddress;
+	FloatAddress headZCoordinateAddress;
 
 public:
 	Character();
