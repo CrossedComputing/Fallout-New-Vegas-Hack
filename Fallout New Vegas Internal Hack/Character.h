@@ -1,11 +1,11 @@
 #pragma once
 #include <Windows.h>
-#include "Address.h"
 #include <vector>
+#include "Address.h"
 #include "InternalFunctions.h"
 
-class Character
-{
+
+class Character {
 private:
 	std::vector<unsigned int> headCoordinateOffsets;
 	std::vector<unsigned int> healthOffsets;

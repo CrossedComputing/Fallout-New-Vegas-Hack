@@ -1,16 +1,18 @@
 #include "Game.h"
 
 
-// Constructor 
+Address Game::gameBaseAddress = Address((uintptr_t)GetModuleHandle("FalloutNV.exe"));
+Address Game::entityListAddress = Address((gameBaseAddress.getAddress() + 0xDE0F00) + 0x8);
+
+
 Game::Game() {
-	this->gameBaseAddress = Address((uintptr_t)GetModuleHandle("FalloutNV.exe"));
-	this->entityListAddress = Address((gameBaseAddress.getAddress() + 0xDE0F00) + 0x8);
+
 }
 
 Address Game::getGameBaseAddress() {
-	return this->gameBaseAddress;
+	return Game::gameBaseAddress;
 }
 
 Address Game::getEntityListAddress() {
-	return this->entityListAddress;
+	return Game::entityListAddress;
 }

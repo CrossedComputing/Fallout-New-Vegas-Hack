@@ -1,13 +1,19 @@
+#pragma once
 #include <iostream>
 #include <Windows.h>
 #include <TlHelp32.h>
 #include "InternalFunctions.h"
+#include "Player.h"
 #include "Game.h"
+
 
 
 DWORD WINAPI mainThread(LPVOID moduleHandle)
 {
     FILE* f = InternalFunctions::createConsole();
+
+    Player player;
+
 
     while (true)
     {

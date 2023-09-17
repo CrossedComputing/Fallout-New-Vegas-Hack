@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <Windows.h>
 #include <TlHelp32.h>
@@ -16,6 +17,4 @@ public:
 	static void nopBytes(uintptr_t* address, int length);
 	static void overwriteBytes(uintptr_t* address, char* newBytes, size_t length);
 	static void x64Detour(uintptr_t detourAddress, uintptr_t hackAddress, uintptr_t opCodeLength, uintptr_t& jumpBack);
-
-	InternalFunctions() = default;
 };

@@ -5,15 +5,14 @@
 
 class Game
 {
-private:
-	Address gameBaseAddress;
-	Address entityListAddress;
-
 public:
 	Game();
 
-	Address getGameBaseAddress();
+	static Address getGameBaseAddress();
+	static Address getEntityListAddress();
 
-	Address getEntityListAddress();
+private:
+	static Address gameBaseAddress;
+	static Address entityListAddress;
 };
 
