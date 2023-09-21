@@ -1,4 +1,8 @@
-﻿  Player.cpp
+﻿  Address.cpp
+  Character.cpp
+  Game.cpp
+  NewVegasHacks.cpp
+  Player.cpp
   dllmain.cpp
   Generating Code...
   Fallout New Vegas Internal Hack.vcxproj -> C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\Debug\Fallout New Vegas Internal Hack.dll

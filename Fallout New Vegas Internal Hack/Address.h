@@ -10,9 +10,21 @@ class Address
 protected:
 	uintptr_t address;
 public:
+	/* Default constructor
+	*/
 	Address();
+
+	/* Constructor that takes in a memory address (uintptr_t)
+	*/
 	Address(uintptr_t memoryAddress);
+
+	/* Returns the address (uintptr_t)
+	*/
 	uintptr_t getAddress();
+
+	/* Dereferences the current address but does not re-assign this->address
+	*/
+	uintptr_t dereference();
 };
 
 class IntAddress : Address {

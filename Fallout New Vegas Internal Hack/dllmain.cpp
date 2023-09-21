@@ -14,6 +14,7 @@ DWORD WINAPI mainThread(LPVOID moduleHandle)
 
     Player player;
 
+    player.healthAddress.printValue();
 
     while (true)
     {

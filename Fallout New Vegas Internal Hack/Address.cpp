@@ -17,6 +17,10 @@ uintptr_t Address::getAddress() {
 	return this->address;
 }
 
+uintptr_t Address::dereference() {
+	return *(uintptr_t*)this->address;
+}
+
 
 /*
 * INT

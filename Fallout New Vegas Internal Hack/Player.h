@@ -16,6 +16,7 @@ public:
 	FloatAddress healthAddress;
 	FloatAddress chestHealthAddress;
 	FloatAddress headHealthAddress;
+	FloatAddress rightArmHealthAddress;
 	FloatAddress leftArmHealthAddress;
 	FloatAddress rightLegHealthAddress;
 	FloatAddress leftLegHealthAddress;
@@ -29,6 +30,7 @@ public:
 	FloatAddress yHeadCoordinate;
 	FloatAddress zHeadCoordinate;
 
+	// Constructor for the Player class. 
 	Player();
 };
 

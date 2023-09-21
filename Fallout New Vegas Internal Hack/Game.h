@@ -8,7 +8,12 @@ class Game
 public:
 	Game();
 
+	/* Returns the static game address as an Address object
+	*/
 	static Address getGameBaseAddress();
+
+	/* Returns the static entity list as an Address Object
+	*/
 	static Address getEntityListAddress();
 
 private:
