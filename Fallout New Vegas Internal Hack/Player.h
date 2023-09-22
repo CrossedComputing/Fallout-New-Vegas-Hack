@@ -20,6 +20,7 @@ public:
 	FloatAddress leftArmHealthAddress;
 	FloatAddress rightLegHealthAddress;
 	FloatAddress leftLegHealthAddress;
+	std::vector<FloatAddress> bodyPartVector;
 
 	FloatAddress xCoordinateAddress;
 	FloatAddress yCoordinateAddress;
@@ -32,5 +33,10 @@ public:
 
 	// Constructor for the Player class. 
 	Player();
+
+	/* Sets the player's health to 1000.0 and loops through the body part vector
+	*  setting every body part's health to 1000.0.
+	*/
+	void godMode();
 };
 

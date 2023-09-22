@@ -14,10 +14,11 @@ DWORD WINAPI mainThread(LPVOID moduleHandle)
 
     Player player;
 
-    player.healthAddress.printValue();
 
     while (true)
     {
+
+        player.godMode();
 
         // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;

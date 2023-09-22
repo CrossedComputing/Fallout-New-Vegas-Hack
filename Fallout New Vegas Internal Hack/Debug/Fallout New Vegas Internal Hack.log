@@ -1,8 +1,3 @@
-﻿  Address.cpp
-  Character.cpp
-  Game.cpp
-  NewVegasHacks.cpp
-  Player.cpp
-  dllmain.cpp
-  Generating Code...
+﻿  Player.cpp
+C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\Fallout New Vegas Internal Hack\Player.cpp(33,20): warning C4018: '<': signed/unsigned mismatch
   Fallout New Vegas Internal Hack.vcxproj -> C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\Debug\Fallout New Vegas Internal Hack.dll
