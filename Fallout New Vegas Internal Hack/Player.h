@@ -6,37 +6,53 @@
 
 class Player
 {
-public:
+public:	
+	static Address playerBaseAddress;
 
-	std::vector<unsigned int> headOffsets;
-	
-	Address playerBaseAddress;
-	IntAddress xpAddress;
-	
-	FloatAddress healthAddress;
-	FloatAddress chestHealthAddress;
-	FloatAddress headHealthAddress;
-	FloatAddress rightArmHealthAddress;
-	FloatAddress leftArmHealthAddress;
-	FloatAddress rightLegHealthAddress;
-	FloatAddress leftLegHealthAddress;
-	std::vector<FloatAddress> bodyPartVector;
+	static IntAddress xpAddress;
+	static FloatAddress healthAddress;
 
-	FloatAddress xCoordinateAddress;
-	FloatAddress yCoordinateAddress;
-	FloatAddress zCoordinateAddress;
-	FloatAddress pitchAddress;
-	FloatAddress yawAddress;
-	FloatAddress xHeadCoordinate;
-	FloatAddress yHeadCoordinate;
-	FloatAddress zHeadCoordinate;
+	static FloatAddress chestHealthAddress;
+	static FloatAddress headHealthAddress;
+	static FloatAddress rightArmHealthAddress;
+	static FloatAddress leftArmHealthAddress;
+	static FloatAddress rightLegHealthAddress;
+	static FloatAddress leftLegHealthAddress;
 
-	// Constructor for the Player class. 
-	Player();
+	static std::vector<FloatAddress> bodyPartVector;
+
+	static FloatAddress xCoordinateAddress;
+	static FloatAddress yCoordinateAddress;
+	static FloatAddress zCoordinateAddress;
+
+	static FloatAddress xHeadCoordinate;
+	static FloatAddress yHeadCoordinate;
+	static FloatAddress zHeadCoordinate;
+
+	static FloatAddress pitchAddress;
+	static FloatAddress yawAddress;
 
 	/* Sets the player's health to 1000.0 and loops through the body part vector
 	*  setting every body part's health to 1000.0.
 	*/
-	void godMode();
+	static void godMode();
+
+private:
+	
+	/* There will only be one player in the game.
+	*	You do not need multiple player objects when
+	*	the members and methods are static.
+	*/
+	Player();
+
+
+	/* Only the player class will need to access this to find the head's
+	*	coordinate address.
+	*/
+	static std::vector<unsigned int> headOffsets;
+
+	/* Returns the Z coordinate address for the player's head.
+	*/
+	static FloatAddress getHeadZCoordinateAddress();
 };
 

@@ -1,13 +1,12 @@
 #include "Address.h"
 
 
-// BASE
-// Default constructor
+
 Address::Address() {
 	this->address = 0xDEADBEEF;
 }
 
-// Main Constructor
+
 Address::Address(uintptr_t memoryAddress) {
 	this->address = memoryAddress;
 }
@@ -22,9 +21,7 @@ uintptr_t Address::dereference() {
 }
 
 
-/*
-* INT
-*/
+
 IntAddress::IntAddress() { this->address = 0xDEADBEEF; }
 IntAddress::IntAddress(uintptr_t address) {
 	this->address = address;
@@ -43,9 +40,6 @@ void IntAddress::printValue() {
 }
 
 
-/*
-* FLOAT
-*/
 FloatAddress::FloatAddress() { this->address = 0xDEADBEEF; }
 FloatAddress::FloatAddress(uintptr_t address) {
 	this->address = address;
@@ -64,9 +58,6 @@ void FloatAddress::printValue() {
 }
 
 
-/*
-* DOUBLE
-*/
 DoubleAddress::DoubleAddress(uintptr_t address) {
 	this->address = address;
 }

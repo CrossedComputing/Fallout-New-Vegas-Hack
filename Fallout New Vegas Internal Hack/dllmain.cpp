@@ -8,17 +8,19 @@
 
 
 
-DWORD WINAPI mainThread(LPVOID moduleHandle)
-{
+DWORD WINAPI mainThread(LPVOID moduleHandle) {
+    
     FILE* f = InternalFunctions::createConsole();
 
-    Player player;
 
+    while (true) {
+        Player::godMode();
 
-    while (true)
-    {
-
-        player.godMode();
+        Player::xHeadCoordinate.printValue();
+        Player::yHeadCoordinate.printValue();
+        Player::zHeadCoordinate.printValue();
+        
+        system("cls");
 
         // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;

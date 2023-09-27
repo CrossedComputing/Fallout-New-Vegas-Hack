@@ -37,16 +37,15 @@ void InternalFunctions::removeConsole(FILE* file)
 }
 
 
-MODULEINFO InternalFunctions::getModuleInfo(char* moduleName)
+MODULEINFO InternalFunctions::getModuleInfo(char* processName)
 {
-	if (moduleName == NULL) {
+	if (processName == NULL) {
 		throw std::invalid_argument("moduleName cannot be null.");
 	}
 
 	MODULEINFO moduleInfo = { 0 };
-	HMODULE moduleHandle = GetModuleHandle(moduleName); 
+	HMODULE moduleHandle = GetModuleHandle(processName); 
 
-	// Get the module information
 	GetModuleInformation(GetCurrentProcess(), moduleHandle, &moduleInfo, sizeof(MODULEINFO));
 	return moduleInfo;
 }

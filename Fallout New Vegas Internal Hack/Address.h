@@ -27,7 +27,7 @@ public:
 	uintptr_t dereference();
 };
 
-class IntAddress : Address {
+class IntAddress : public Address {
 public:
 	IntAddress();
 	IntAddress(uintptr_t address);
@@ -51,7 +51,7 @@ public:
 	void printValue();
 };
 
-class DoubleAddress : Address {
+class DoubleAddress : public Address {
 public:
 
 	DoubleAddress(uintptr_t address);

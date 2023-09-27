@@ -19,3 +19,7 @@ Character::Character(Address characterBaseAddress) {
 	this->headXCoordinateAddress = FloatAddress(headZCoordinateAddress.getAddress() - 0x4);
 	this->headYCoordinateAddress = FloatAddress(headZCoordinateAddress.getAddress() - 0x8);
 }
+
+bool Character::IsHostile() {
+	return this->hostileAddress.getValue() == 1;
+}

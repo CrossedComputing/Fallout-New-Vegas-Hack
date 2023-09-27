@@ -7,23 +7,32 @@
 
 class Character {
 private:
+
 	std::vector<unsigned int> headCoordinateOffsets;
 	std::vector<unsigned int> healthOffsets;
 
+	IntAddress hostileAddress; // 1 = hostile
+	FloatAddress healthAddress;
 	Address BaseAddress;
+
 	FloatAddress xCoordinateAddress;
 	FloatAddress yCoordinateAddress;
 	FloatAddress zCoordinateAddress;
-	IntAddress hostileAddress;
-	FloatAddress healthAddress;
+
 	FloatAddress headXCoordinateAddress;
 	FloatAddress headYCoordinateAddress;
 	FloatAddress headZCoordinateAddress;
 
 public:
+
 	Character();
+
 	Character(Address characterBaseAddress);
-	bool characterIsAlive();
-	bool characterIsHostile();
+
+	bool IsAlive();
+
+	/* Returns true if character is hostile.
+	*/
+	bool IsHostile();
 };
 

@@ -1,36 +1,42 @@
 #include "Player.h"
 
 
-Player::Player() {
-	this->playerBaseAddress = Address(Game::getGameBaseAddress().getAddress() + 0xDDEA3C).dereference();;
-	this->xpAddress = IntAddress(Player::playerBaseAddress.getAddress() + 0x3D8);
-	this->healthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x4AC);
-	this->chestHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x518);
-	this->headHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x514);
-	this->rightArmHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x51C);
-	this->leftArmHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x520);
-	this->rightLegHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x524);
-	this->leftLegHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x528);
-	this->xCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x34);
-	this->yCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x30);
-	this->xCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x38);
-	this->pitchAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x24);
-	this->yawAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x2C);
-	this->bodyPartVector = { this->chestHealthAddress, this->headHealthAddress, this->rightArmHealthAddress,
-		this->leftArmHealthAddress, this->rightLegHealthAddress, this->leftLegHealthAddress };
+Address Player::playerBaseAddress = Address(Game::getGameBaseAddress().getAddress() + 0xDDEA3C).dereference();;
+
+IntAddress Player::xpAddress = IntAddress(Player::playerBaseAddress.getAddress() + 0x3D8);
+FloatAddress Player::healthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x4AC);
+
+FloatAddress Player::chestHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x518);
+FloatAddress Player::headHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x514);
+FloatAddress Player::rightArmHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x51C);
+FloatAddress Player::leftArmHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x520);
+FloatAddress Player::rightLegHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x524);
+FloatAddress Player::leftLegHealthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x528);
+std::vector<FloatAddress> Player::bodyPartVector = { Player::chestHealthAddress, Player::headHealthAddress, Player::rightArmHealthAddress,
+	Player::leftArmHealthAddress, Player::rightLegHealthAddress, Player::leftLegHealthAddress };
+
+FloatAddress Player::xCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x34);
+FloatAddress Player::yCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x30);
+FloatAddress Player::zCoordinateAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x38);
+
+FloatAddress Player::pitchAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x24);
+FloatAddress Player::yawAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x2C);
+
+std::vector<unsigned int> Player::headOffsets = { 0x44, 0x94 };
+FloatAddress Player::zHeadCoordinate = Player::getHeadZCoordinateAddress();
+FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x4);
+FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
 
 
-	/*
-	FloatAddress xHeadCoordinate;
-	FloatAddress yHeadCoordinate;
-	FloatAddress zHeadCoordinate;
-	*/
-}
 
 void Player::godMode() {
-	this->healthAddress.setValue(1000.0);
+	Player::healthAddress.setValue(1000.0);
 
-	for (int i = 0; i < this->bodyPartVector.size(); i++) {
-		this->bodyPartVector[i].setValue(1000.0);
+	for (unsigned int i = 0; i < Player::bodyPartVector.size(); i++) {
+		Player::bodyPartVector[i].setValue(1000.0);
 	}
+}
+
+FloatAddress Player::getHeadZCoordinateAddress() {
+	return InternalFunctions::resolvePointerChain(Player::playerBaseAddress.getAddress() + 0x690, Player::headOffsets);
 }

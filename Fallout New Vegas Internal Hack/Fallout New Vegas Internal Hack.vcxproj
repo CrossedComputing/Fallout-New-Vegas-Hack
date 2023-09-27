@@ -154,7 +154,6 @@
     <ClCompile Include="Address.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InternalFunctions.cpp" />
     <ClCompile Include="NewVegasHacks.cpp" />
@@ -163,7 +162,6 @@
   <ItemGroup>
     <ClInclude Include="Address.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InternalFunctions.h" />
     <ClInclude Include="NewVegasHacks.h" />
