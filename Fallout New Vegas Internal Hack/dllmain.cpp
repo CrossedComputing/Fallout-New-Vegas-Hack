@@ -12,16 +12,17 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
     
     FILE* f = InternalFunctions::createConsole();
 
-
+    std::vector <Character> entityList;
     while (true) {
+
         Player::godMode();
 
-        Player::xHeadCoordinate.printValue();
-        Player::yHeadCoordinate.printValue();
-        Player::zHeadCoordinate.printValue();
-        
-        system("cls");
+        entityList = Game::getEntityList();
 
+        for (int i = 0; i < entityList.size(); i++) {
+            std::cout << "Entity " << i << ": " << std::hex << entityList[i].getAddress().getAddress() << std::endl;
+        }
+        
         // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;
 
@@ -35,17 +36,14 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
 }
 
 
-BOOL APIENTRY DllMain( HMODULE hModule,
-                       DWORD  ul_reason_for_call,
-                       LPVOID lpReserved
+BOOL APIENTRY DllMain( HMODULE moduleHandle,
+                       DWORD  callReason,
+                       LPVOID lpvReserved
                      )
 {
-    switch (ul_reason_for_call)
-    {
+    switch (callReason) {
     case DLL_PROCESS_ATTACH:
-        CloseHandle(CreateThread(0, 0, mainThread, hModule, 0, 0)); // Create a thread that runs hackthread function
-        // Create thread creates a thread within the virtual address space of the CALLING PROCESS (so the game you're injecting in)
-        // Wrapping it in closeHandle() closes the handle to the module (CreateThread returns a handle to thread created)
+        CloseHandle(CreateThread(0, 0, mainThread, moduleHandle, 0, 0));
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:

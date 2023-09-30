@@ -1,5 +1,2 @@
 ﻿  dllmain.cpp
-C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\Fallout New Vegas Internal Hack\dllmain.cpp(48,1): fatal  error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-  InternalFunctions.cpp
-C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\Fallout New Vegas Internal Hack\InternalFunctions.cpp(117,1): fatal  error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "pch.h"' to your source?
-  Generating Code...
+  Fallout New Vegas Internal Hack.vcxproj -> C:\Users\nickr\source\repos\Fallout New Vegas Internal Hack\x64\Debug\Fallout New Vegas Internal Hack.dll

@@ -25,11 +25,15 @@ public:
 	/* Dereferences the current address but does not re-assign this->address
 	*/
 	uintptr_t dereference();
+
+	void add(uintptr_t operand);
 };
 
 class IntAddress : public Address {
 public:
+
 	IntAddress();
+
 	IntAddress(uintptr_t address);
 
 	int getValue();
@@ -41,7 +45,9 @@ public:
 
 class FloatAddress : public Address {
 public:
+
 	FloatAddress();
+
 	FloatAddress(uintptr_t address);
 
 	float getValue();
@@ -53,6 +59,8 @@ public:
 
 class DoubleAddress : public Address {
 public:
+
+	DoubleAddress();
 
 	DoubleAddress(uintptr_t address);
 

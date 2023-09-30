@@ -2,10 +2,7 @@
 
 
 
-Address::Address() {
-	this->address = 0xDEADBEEF;
-}
-
+Address::Address() { this->address = 0xDEADBEEF; }
 
 Address::Address(uintptr_t memoryAddress) {
 	this->address = memoryAddress;
@@ -20,9 +17,14 @@ uintptr_t Address::dereference() {
 	return *(uintptr_t*)this->address;
 }
 
+void Address::add(uintptr_t operand) {
+	this->address += operand;
+}
+
 
 
 IntAddress::IntAddress() { this->address = 0xDEADBEEF; }
+
 IntAddress::IntAddress(uintptr_t address) {
 	this->address = address;
 }
@@ -41,6 +43,7 @@ void IntAddress::printValue() {
 
 
 FloatAddress::FloatAddress() { this->address = 0xDEADBEEF; }
+
 FloatAddress::FloatAddress(uintptr_t address) {
 	this->address = address;
 }
@@ -57,6 +60,8 @@ void FloatAddress::printValue() {
 	std::cout << "Value at " << std::hex << this->address << " " << std::dec << *(float*)this->address << std::endl;
 }
 
+
+DoubleAddress::DoubleAddress() { this->address = 0xDEADBEEF; }
 
 DoubleAddress::DoubleAddress(uintptr_t address) {
 	this->address = address;

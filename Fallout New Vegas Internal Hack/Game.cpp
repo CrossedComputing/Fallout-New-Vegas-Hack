@@ -17,3 +17,19 @@ Address Game::getGameBaseAddress() {
 Address Game::getEntityListAddress() {
 	return Game::entityListAddress;
 }
+
+
+std::vector<Character> Game::getEntityList() {
+	std::vector<Character> entityList;
+	Address characterBuffer;
+	Address entityListPosition(Game::entityListAddress.dereference());
+
+	while (entityListPosition.dereference() != 0) {
+		Address characterAddress(entityListPosition.dereference());
+		entityList.push_back(Character(characterAddress));
+
+		entityListPosition.add(0x4);
+	}
+
+	return entityList;
+}

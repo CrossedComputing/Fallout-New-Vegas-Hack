@@ -36,7 +36,6 @@ void InternalFunctions::removeConsole(FILE* file)
 	FreeConsole();
 }
 
-
 MODULEINFO InternalFunctions::getModuleInfo(char* processName)
 {
 	if (processName == NULL) {
@@ -44,7 +43,7 @@ MODULEINFO InternalFunctions::getModuleInfo(char* processName)
 	}
 
 	MODULEINFO moduleInfo = { 0 };
-	HMODULE moduleHandle = GetModuleHandle(processName); 
+	HMODULE moduleHandle = GetModuleHandle(processName);
 
 	GetModuleInformation(GetCurrentProcess(), moduleHandle, &moduleInfo, sizeof(MODULEINFO));
 	return moduleInfo;
@@ -77,9 +76,6 @@ void InternalFunctions::printBytes(uintptr_t address, int length) {
 	}
 }
 
-/*
-* Given an address and length, 0x90 the bytes
-*/
 void InternalFunctions::nopBytes(uintptr_t* address, int length) {
 	DWORD oldProtection = 0x1; 
 	VirtualProtect(address, length, PAGE_EXECUTE_READWRITE, &oldProtection);

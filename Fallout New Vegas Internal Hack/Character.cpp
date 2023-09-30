@@ -23,3 +23,7 @@ Character::Character(Address characterBaseAddress) {
 bool Character::IsHostile() {
 	return this->hostileAddress.getValue() == 1;
 }
+
+Address Character::getAddress() {
+	return this->BaseAddress;
+}

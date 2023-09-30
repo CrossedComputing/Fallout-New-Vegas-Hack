@@ -34,5 +34,7 @@ public:
 	/* Returns true if character is hostile.
 	*/
 	bool IsHostile();
+
+	Address getAddress();
 };
 

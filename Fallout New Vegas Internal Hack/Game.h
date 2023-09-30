@@ -1,6 +1,8 @@
 #pragma once
 #include <Windows.h>
+#include <vector>
 #include "Address.h"
+#include "Character.h"
 
 
 /* Game address for generic game addresses and methods.
@@ -16,6 +18,10 @@ public:
 	/* Returns the entity list as an Address Object
 	*/
 	static Address getEntityListAddress();
+
+	/* Returns the entity list as a vector of Characters
+	*/
+	static std::vector<Character> getEntityList();
 
 private:
 
