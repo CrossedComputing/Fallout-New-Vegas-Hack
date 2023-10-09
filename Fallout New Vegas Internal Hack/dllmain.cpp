@@ -14,7 +14,7 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
 
     std::vector <Character> entityList;
     while (true) {
-
+        system("cls");
         Player::godMode();
 
         entityList = Game::getEntityList();
@@ -23,10 +23,12 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
             std::cout << "Entity " << i << ": " << std::hex << entityList[i].getAddress().getAddress() << std::endl;
         }
         
+
+
         // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;
 
-        Sleep(10);
+        Sleep(4000);
     }
 
     // Free the DLL, Close the console

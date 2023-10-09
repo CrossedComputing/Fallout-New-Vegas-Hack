@@ -22,7 +22,7 @@ Address Game::getEntityListAddress() {
 std::vector<Character> Game::getEntityList() {
 	std::vector<Character> entityList;
 	Address characterBuffer;
-	Address entityListPosition(Game::entityListAddress.dereference());
+	Address entityListPosition(Game::entityListAddress);
 
 	while (entityListPosition.dereference() != 0) {
 		Address characterAddress(entityListPosition.dereference());
