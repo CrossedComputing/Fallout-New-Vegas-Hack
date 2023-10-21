@@ -27,3 +27,19 @@ bool Character::IsHostile() {
 Address Character::getAddress() {
 	return this->BaseAddress;
 }
+
+bool Character::isAlive() {
+	return this->healthAddress.getValue() > 0;
+}
+
+FloatAddress Character::getHeadXCoordinateAddress() {
+	return this->headXCoordinateAddress;
+}
+
+FloatAddress Character::getHeadYCoordinateAddress() {
+	return this->headYCoordinateAddress;
+}
+
+FloatAddress Character::getHeadZCoordinateAddress() {
+	return this->headZCoordinateAddress;
+}

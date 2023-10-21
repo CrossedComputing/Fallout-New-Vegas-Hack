@@ -23,7 +23,7 @@ FloatAddress Player::pitchAddress = FloatAddress(Player::playerBaseAddress.getAd
 FloatAddress Player::yawAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x2C);
 
 std::vector<unsigned int> Player::headOffsets = { 0x44, 0x94 };
-FloatAddress Player::zHeadCoordinate = Player::getHeadZCoordinateAddress();
+FloatAddress Player::zHeadCoordinate = Player::resolveHeadZCoordAddress();
 FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x4);
 FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
 
@@ -37,6 +37,26 @@ void Player::godMode() {
 	}
 }
 
-FloatAddress Player::getHeadZCoordinateAddress() {
+FloatAddress Player::resolveHeadZCoordAddress() {
 	return InternalFunctions::resolvePointerChain(Player::playerBaseAddress.getAddress() + 0x690, Player::headOffsets);
+}
+
+FloatAddress Player::getHeadXCoordinateAddress() {
+	return Player::xHeadCoordinate;
+}
+
+FloatAddress Player::getHeadYCoordinateAddress() {
+	return Player::yHeadCoordinate;
+}
+
+FloatAddress Player::getHeadZCoordinateAddress() {
+	return Player::zHeadCoordinate;
+}
+
+void Player::setPlayerYaw(float yaw) {
+	Player::yawAddress.setValue(yaw);
+}
+
+void Player::setPlayerPitch(float pitch) {
+	Player::pitchAddress.setValue(pitch);
 }

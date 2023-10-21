@@ -5,6 +5,7 @@
 #include "InternalFunctions.h"
 #include "Player.h"
 #include "Game.h"
+#include "Aimbot.h"
 
 
 
@@ -13,22 +14,17 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
     FILE* f = InternalFunctions::createConsole();
 
     std::vector <Character> entityList;
+
+
     while (true) {
-        system("cls");
         Player::godMode();
 
-        entityList = Game::getEntityList();
-
-        for (int i = 0; i < entityList.size(); i++) {
-            std::cout << "Entity " << i << ": " << std::hex << entityList[i].getAddress().getAddress() << std::endl;
-        }
-        
-
+        Aimbot::aimbot();
 
         // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;
 
-        Sleep(4000);
+        Sleep(100);
     }
 
     // Free the DLL, Close the console

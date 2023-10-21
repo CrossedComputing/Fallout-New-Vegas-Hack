@@ -26,10 +26,11 @@ std::vector<Character> Game::getEntityList() {
 
 	while (entityListPosition.dereference() != 0) {
 		Address characterAddress(entityListPosition.dereference());
-		entityList.push_back(Character(characterAddress));
-
+		Character character(characterAddress);
+		if (character.isAlive()) {
+			entityList.push_back(character);
+		}
 		entityListPosition.add(0x4);
 	}
-
 	return entityList;
 }
