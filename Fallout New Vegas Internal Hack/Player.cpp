@@ -24,8 +24,8 @@ FloatAddress Player::yawAddress = FloatAddress(Player::playerBaseAddress.getAddr
 
 std::vector<unsigned int> Player::headOffsets = { 0x44, 0x94 };
 FloatAddress Player::zHeadCoordinate = Player::resolveHeadZCoordAddress();
-FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x4);
-FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
+FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x4);
+FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
 
 
 
