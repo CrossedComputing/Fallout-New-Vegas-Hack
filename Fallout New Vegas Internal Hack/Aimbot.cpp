@@ -31,7 +31,6 @@ Character Aimbot::getClosestCharacter(std::vector<Character> entityList) {
 	
 
 	for (size_t i = 0; i < entityList.size(); i++) {
-		std::cout << "Testing: " << std::hex << entityList[i].getAddress().getAddress() << std::endl;
 		testingDistance = Aimbot::getDistanceToPlayer(entityList[i]);
 		if (testingDistance < shortestDistance) {
 			shortestDistance = testingDistance;
@@ -44,21 +43,13 @@ Character Aimbot::getClosestCharacter(std::vector<Character> entityList) {
 
 void Aimbot::aimAt(Character character) {
 
+	if (!character.isValidCharacter()) {
+		return;
+	}
+
 	float xDif = character.getHeadXCoordinateAddress().getValue() - Player::getHeadXCoordinateAddress().getValue();
 	float yDif = character.getHeadYCoordinateAddress().getValue() - Player::getHeadYCoordinateAddress().getValue();
 	float zDif = character.getHeadZCoordinateAddress().getValue() - Player::getHeadZCoordinateAddress().getValue();
-
-	std::cout << "Char head x Coord: " << std::hex << character.getHeadXCoordinateAddress().getValue() << std::endl;
-	std::cout << "Char head y Coord: " << std::hex << character.getHeadYCoordinateAddress().getValue() << std::endl;
-	std::cout << "Char head z Coord: " << std::hex << character.getHeadZCoordinateAddress().getValue() << std::endl;
-
-	std::cout << "player head x Coord: " << std::hex << Player::getHeadXCoordinateAddress().getValue() << std::endl;
-	std::cout << "player head y Coord: " << std::hex << Player::getHeadYCoordinateAddress().getValue() << std::endl;
-	std::cout << "player head z Coord: " << std::hex << Player::getHeadZCoordinateAddress().getValue() << std::endl;
-
-
-
-
 
 	// Complete the 3D distance formula. Get This would be your hypotenuse because
 	// The distance to your player to the entity would be the long side (Hypotenuse) of the right triangle.
@@ -79,9 +70,6 @@ void Aimbot::aimAt(Character character) {
 
 void Aimbot::aimbot() {
 	Character closestCharacter = Aimbot::getClosestCharacter(Game::getEntityList());
-
-	std::cout << "Closest character: " << std::hex << closestCharacter.getAddress().getAddress() << std::endl;
-
 
 	if (GetAsyncKeyState(VK_RBUTTON)) {
 		Aimbot::aimAt(closestCharacter);

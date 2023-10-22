@@ -32,6 +32,10 @@ bool Character::isAlive() {
 	return this->healthAddress.getValue() > 0;
 }
 
+bool Character::isValidCharacter() {
+	return this->BaseAddress.getAddress() != 0xDEADBEEF;
+}
+
 FloatAddress Character::getHeadXCoordinateAddress() {
 	return this->headXCoordinateAddress;
 }

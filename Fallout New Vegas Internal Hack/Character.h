@@ -51,6 +51,15 @@ public:
 	*/
 	bool IsHostile();
 
+	/* Returns true if character is a valid character.
+	*		This method checks that the base address is not	
+	*		0xDEADBEEF. It is Possible that a character is not
+	*		valid if you mess up creating the entity list and try
+	*		to create a character with a base address that isn't a 
+	*		valid base address for a character.
+	*/
+	bool isValidCharacter();
+
 	/* Gets the base address of the character
 	*/
 	Address getAddress();
