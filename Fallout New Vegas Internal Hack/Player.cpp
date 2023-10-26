@@ -28,17 +28,24 @@ FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getA
 FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
 
 
+FloatAddress Player::gravityInstructionAddress = Player::resolvePointerChainToGravityInstruction();
+char Player::gravitySignature[7] = "\x0F\x28\x43\x10\xD9\xEE";
+char Player::gravityMask[7] = "xxxxxx";
 
-void Player::godMode() {
-	Player::healthAddress.setValue(1000.0);
 
-	for (unsigned int i = 0; i < Player::bodyPartVector.size(); i++) {
-		Player::bodyPartVector[i].setValue(1000.0);
-	}
+FloatAddress Player::resolvePointerChainToGravityInstruction() {
+	char moduleName[14] = "FalloutNV.exe";
+	MODULEINFO moduleInfo = InternalFunctions::getModuleInfo(moduleName);
+	FloatAddress GravityAddress(InternalFunctions::sigFinder(moduleInfo, gravitySignature, gravityMask));
+	return GravityAddress;
 }
 
 FloatAddress Player::resolveHeadZCoordAddress() {
 	return InternalFunctions::resolvePointerChain(Player::playerBaseAddress.getAddress() + 0x690, Player::headOffsets);
+}
+
+FloatAddress Player::getGravityInstruction() {
+	return Player::gravityInstructionAddress;
 }
 
 FloatAddress Player::getHeadXCoordinateAddress() {
@@ -59,4 +66,12 @@ void Player::setPlayerYaw(float yaw) {
 
 void Player::setPlayerPitch(float pitch) {
 	Player::pitchAddress.setValue(pitch);
+}
+
+void Player::godMode() {
+	Player::healthAddress.setValue(1000.0);
+
+	for (unsigned int i = 0; i < Player::bodyPartVector.size(); i++) {
+		Player::bodyPartVector[i].setValue(1000.0);
+	}
 }

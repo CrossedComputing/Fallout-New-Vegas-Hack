@@ -33,7 +33,7 @@ private:
 public:
 
 	/* Default constructor will create a character with a base
-	*		address of 0xDEADBEEF.
+	*		address of 0xDEADC0DE.
 	*/
 	Character();
 
@@ -53,7 +53,7 @@ public:
 
 	/* Returns true if character is a valid character.
 	*		This method checks that the base address is not	
-	*		0xDEADBEEF. It is Possible that a character is not
+	*		0xDEADC0DE. It is Possible that a character is not
 	*		valid if you mess up creating the entity list and try
 	*		to create a character with a base address that isn't a 
 	*		valid base address for a character.

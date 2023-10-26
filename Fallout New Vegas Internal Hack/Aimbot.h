@@ -36,6 +36,5 @@ private:
 	/* Forces the player to aim at the head of the character.
 	*/
 	static void aimAt(Character character);
-
 };
 

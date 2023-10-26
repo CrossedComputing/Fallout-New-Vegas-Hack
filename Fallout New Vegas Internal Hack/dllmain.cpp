@@ -18,7 +18,6 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
 
     while (true) {
         Player::godMode();
-
         Aimbot::aimbot();
 
         // So we can break from the infinite loop

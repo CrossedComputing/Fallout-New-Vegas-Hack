@@ -19,7 +19,7 @@ float Aimbot::getDistanceToPlayer(Character character) {
 
 Character Aimbot::getClosestCharacter(std::vector<Character> entityList) {
 
-	// Return a character with base address 0xDEADBEEF if entity list is empty.
+	// Return a character with base address 0xDEADC0DE if entity list is empty.
 	if (entityList.size() == 0) {
 		Character character;
 		return character;
@@ -51,12 +51,11 @@ void Aimbot::aimAt(Character character) {
 	float yDif = character.getHeadYCoordinateAddress().getValue() - Player::getHeadYCoordinateAddress().getValue();
 	float zDif = character.getHeadZCoordinateAddress().getValue() - Player::getHeadZCoordinateAddress().getValue();
 
-	// Complete the 3D distance formula. Get This would be your hypotenuse because
-	// The distance to your player to the entity would be the long side (Hypotenuse) of the right triangle.
+
 	float hypotenuse = sqrt((xDif * xDif) + (yDif * yDif) + (zDif * zDif));
 	float opposite = zDif;
 
-	float yaw = atan2(yDif, xDif); // Calculate the yaw angle with the delta values
+	float yaw = atan2(yDif, xDif);
 
 	float pitch = asin(opposite / hypotenuse);
 

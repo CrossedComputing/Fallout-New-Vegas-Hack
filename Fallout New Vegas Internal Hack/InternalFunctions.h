@@ -35,7 +35,7 @@ public:
 	*	This function iterates through the process memory until
 	*	it finds the signature. It returns the address where the
 	*	signature began. If no signature is found, method returns
-	*	0xDEADBEEF.
+	*	0xDEADC0DE.
 	*/
 	static uintptr_t sigFinder(MODULEINFO game, char* signature, char* mask);
 

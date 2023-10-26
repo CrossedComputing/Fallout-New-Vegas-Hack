@@ -35,6 +35,12 @@ private:
 	static FloatAddress pitchAddress;
 	static FloatAddress yawAddress;
 
+	static FloatAddress gravityInstructionAddress;
+
+	static char gravitySignature[7];
+	static char gravityMask[7];
+
+
 
 	/* There will only be one player in the game.
 	*		You do not need multiple player objects when
@@ -42,13 +48,17 @@ private:
 	*/
 	Player();
 
+	/* Resolve the pointer chain to the gravity address for the player
+	*/
+	static FloatAddress resolvePointerChainToGravityInstruction();
+
+
+
 public:
 
-	/* Sets the player's health to 1000.0 and loops through the body part vector
-	*		setting every body part's health to 1000.0.
+	/* Getter for the gravity instruction address
 	*/
-	static void godMode();
-
+	static FloatAddress getGravityInstruction();
 
 	/* Resolves the pointer chain leading to the player's head's Z
 	*		coordinate.
@@ -77,5 +87,10 @@ public:
 	/* Set a new pitch for the player's view
 	*/
 	static void setPlayerPitch(float pitch);
+
+	/* Sets the player's health to 1000.0 and loops through the body part vector
+	*		setting every body part's health to 1000.0.
+	*/
+	static void godMode();
 };
 

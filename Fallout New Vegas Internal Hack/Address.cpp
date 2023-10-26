@@ -2,7 +2,7 @@
 
 
 
-Address::Address() { this->address = 0xDEADBEEF; }
+Address::Address() { this->address = 0xDEADC0DE; }
 
 Address::Address(uintptr_t memoryAddress) {
 	this->address = memoryAddress;
@@ -23,7 +23,7 @@ void Address::add(uintptr_t operand) {
 
 
 
-IntAddress::IntAddress() { this->address = 0xDEADBEEF; }
+IntAddress::IntAddress() { this->address = 0xDEADC0DE; }
 
 IntAddress::IntAddress(uintptr_t address) {
 	this->address = address;
@@ -42,7 +42,7 @@ void IntAddress::printValue() {
 }
 
 
-FloatAddress::FloatAddress() { this->address = 0xDEADBEEF; }
+FloatAddress::FloatAddress() { this->address = 0xDEADC0DE; }
 
 FloatAddress::FloatAddress(uintptr_t address) {
 	this->address = address;
@@ -61,7 +61,7 @@ void FloatAddress::printValue() {
 }
 
 
-DoubleAddress::DoubleAddress() { this->address = 0xDEADBEEF; }
+DoubleAddress::DoubleAddress() { this->address = 0xDEADC0DE; }
 
 DoubleAddress::DoubleAddress(uintptr_t address) {
 	this->address = address;

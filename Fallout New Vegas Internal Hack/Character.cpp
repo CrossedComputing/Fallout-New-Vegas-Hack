@@ -2,7 +2,7 @@
 
 
 Character::Character() {
-	this->BaseAddress = Address(0xDEADBEEF);
+	this->BaseAddress = Address(0xDEADC0DE);
 }
 
 Character::Character(Address characterBaseAddress) {
@@ -20,12 +20,10 @@ Character::Character(Address characterBaseAddress) {
 	this->headYCoordinateAddress = FloatAddress(headZCoordinateAddress.getAddress() - 0x8);
 }
 
+
+
 bool Character::IsHostile() {
 	return this->hostileAddress.getValue() == 1;
-}
-
-Address Character::getAddress() {
-	return this->BaseAddress;
 }
 
 bool Character::isAlive() {
@@ -33,7 +31,11 @@ bool Character::isAlive() {
 }
 
 bool Character::isValidCharacter() {
-	return this->BaseAddress.getAddress() != 0xDEADBEEF;
+	return this->BaseAddress.getAddress() != 0xDEADC0DE;
+}
+
+Address Character::getAddress() {
+	return this->BaseAddress;
 }
 
 FloatAddress Character::getHeadXCoordinateAddress() {

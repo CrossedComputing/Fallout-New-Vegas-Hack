@@ -50,7 +50,7 @@ MODULEINFO InternalFunctions::getModuleInfo(char* processName)
 }
 
 uintptr_t InternalFunctions::sigFinder(MODULEINFO game, char* signature, char* mask) {
-	uintptr_t memoryBase = (uintptr_t)game.EntryPoint;
+	uintptr_t memoryBase = (uintptr_t)game.lpBaseOfDll;
 	int imageSize = game.SizeOfImage;
 	bool found = true;
 
