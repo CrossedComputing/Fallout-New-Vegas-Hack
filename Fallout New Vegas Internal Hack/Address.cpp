@@ -79,3 +79,27 @@ void DoubleAddress::printValue() {
 	std::cout << "Value at " << std::hex << this->address << " " << std::dec << *(double*)this->address << std::endl;
 }
 
+
+CharAddress::CharAddress() {
+	this->address = 0xDEADC0DE;
+}
+
+CharAddress::CharAddress(uintptr_t address) {
+	this->address = address;
+}
+
+char CharAddress::getValue() {
+	return *(char*)this->address;
+}
+
+void CharAddress::setValue(char newValue) {
+	*(char*)this->address = newValue;
+}
+
+void CharAddress::printValue() {
+	std::cout << "Value at " << std::hex << this->address << " " << *(char*)this->address << std::endl;
+}
+
+void CharAddress::incrementAddress(uintptr_t inc) {
+	this->address += inc;
+}

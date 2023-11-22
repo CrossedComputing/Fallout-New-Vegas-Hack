@@ -13,14 +13,10 @@ DWORD WINAPI mainThread(LPVOID moduleHandle) {
     
     FILE* f = InternalFunctions::createConsole();
 
-    std::vector <Character> entityList;
-
-
     while (true) {
         Player::godMode();
         Aimbot::aimbot();
 
-        // So we can break from the infinite loop
         if (GetAsyncKeyState(VK_INSERT) & 1) break;
 
         Sleep(100);

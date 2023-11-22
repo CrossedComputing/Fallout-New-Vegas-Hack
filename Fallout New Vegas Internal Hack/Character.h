@@ -3,19 +3,21 @@
 #include <vector>
 #include "Address.h"
 #include "InternalFunctions.h"
+#include <string>
 
 
 /* Class for characters (NPCs)
 * 
-* Currently, there is no need to refactor into subclasses like
-*		human, animal, robot, etc because all of the entities appear to
-*		have consistant structure in memory.
 */
 class Character {
 private:
 
+	std::vector<std::string> crashCharacters;
 	std::vector<unsigned int> headCoordinateOffsets;
 	std::vector<unsigned int> healthOffsets;
+
+	bool isValid;
+	char name[50];
 
 	IntAddress hostileAddress; // 1 = hostile
 	FloatAddress healthAddress;
@@ -29,6 +31,7 @@ private:
 	FloatAddress headXCoordinateAddress;
 	FloatAddress headYCoordinateAddress;
 	FloatAddress headZCoordinateAddress;
+
 
 public:
 
@@ -59,6 +62,21 @@ public:
 	*		valid base address for a character.
 	*/
 	bool isValidCharacter();
+
+	/** If the character is found to be one that will crash the game
+	*	by trying to calculate it's different properties, this will
+	*	be set to true, and none of the character properties will be
+	*	calculated for it.
+	*/
+	bool isCrashCharacter();
+
+	/* Parses memory for the character's name.
+	* 
+	* The char* name passed in is pass by reference
+	*/
+	void computeCharacterName(char* name);
+
+	void printName();
 
 	/* Gets the base address of the character
 	*/

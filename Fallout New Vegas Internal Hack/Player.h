@@ -35,7 +35,7 @@ private:
 	static FloatAddress pitchAddress;
 	static FloatAddress yawAddress;
 
-	static FloatAddress gravityInstructionAddress;
+	static Address gravityInstructionAddress;
 
 	static char gravitySignature[7];
 	static char gravityMask[7];
@@ -50,7 +50,7 @@ private:
 
 	/* Resolve the pointer chain to the gravity address for the player
 	*/
-	static FloatAddress resolvePointerChainToGravityInstruction();
+	static Address resolvePointerChainToGravityInstruction();
 
 
 
@@ -58,7 +58,7 @@ public:
 
 	/* Getter for the gravity instruction address
 	*/
-	static FloatAddress getGravityInstruction();
+	static Address getGravityInstruction();
 
 	/* Resolves the pointer chain leading to the player's head's Z
 	*		coordinate.

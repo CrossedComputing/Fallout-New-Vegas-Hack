@@ -70,3 +70,20 @@ public:
 
 	void printValue();
 };
+
+class CharAddress : public Address {
+public:
+
+	CharAddress();
+
+	CharAddress(uintptr_t address);
+
+	char getValue();
+
+	void setValue(char newValue);
+
+	void printValue();
+
+	void incrementAddress(uintptr_t inc);
+
+};

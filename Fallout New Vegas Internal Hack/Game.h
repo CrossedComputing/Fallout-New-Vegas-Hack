@@ -23,6 +23,8 @@ public:
 	*/
 	static std::vector<Character> getEntityList();
 
+	static void printEntityList();
+
 private:
 
 	/* Constructor is private because there is only one "game".

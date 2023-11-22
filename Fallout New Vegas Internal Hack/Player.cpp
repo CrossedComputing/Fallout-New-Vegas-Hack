@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Address Player::playerBaseAddress = Address(Game::getGameBaseAddress().getAddress() + 0xDDEA3C).dereference();;
+Address Player::playerBaseAddress = Address(Game::getGameBaseAddress().getAddress() + 0xDDEA3C).dereference();
 
 IntAddress Player::xpAddress = IntAddress(Player::playerBaseAddress.getAddress() + 0x3D8);
 FloatAddress Player::healthAddress = FloatAddress(Player::playerBaseAddress.getAddress() + 0x4AC);
@@ -28,15 +28,15 @@ FloatAddress Player::xHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getA
 FloatAddress Player::yHeadCoordinate = FloatAddress(Player::zHeadCoordinate.getAddress() - 0x8);
 
 
-FloatAddress Player::gravityInstructionAddress = Player::resolvePointerChainToGravityInstruction();
+Address Player::gravityInstructionAddress = Player::resolvePointerChainToGravityInstruction();
 char Player::gravitySignature[7] = "\x0F\x28\x43\x10\xD9\xEE";
 char Player::gravityMask[7] = "xxxxxx";
 
 
-FloatAddress Player::resolvePointerChainToGravityInstruction() {
+Address Player::resolvePointerChainToGravityInstruction() {
 	char moduleName[14] = "FalloutNV.exe";
 	MODULEINFO moduleInfo = InternalFunctions::getModuleInfo(moduleName);
-	FloatAddress GravityAddress(InternalFunctions::sigFinder(moduleInfo, gravitySignature, gravityMask));
+	Address GravityAddress(InternalFunctions::sigFinder(moduleInfo, gravitySignature, gravityMask));
 	return GravityAddress;
 }
 
@@ -44,7 +44,7 @@ FloatAddress Player::resolveHeadZCoordAddress() {
 	return InternalFunctions::resolvePointerChain(Player::playerBaseAddress.getAddress() + 0x690, Player::headOffsets);
 }
 
-FloatAddress Player::getGravityInstruction() {
+Address Player::getGravityInstruction() {
 	return Player::gravityInstructionAddress;
 }
 

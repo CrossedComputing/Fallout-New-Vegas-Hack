@@ -3,6 +3,9 @@
 
 float Aimbot::getDistanceToPlayer(Character character) {
 	
+	if (!character.isValidCharacter()) {
+		return 0.0;
+	}
 	
 	// first part of 3d distance formula
 	float xDif = character.getHeadXCoordinateAddress().getValue() - Player::getHeadXCoordinateAddress().getValue();
@@ -31,6 +34,10 @@ Character Aimbot::getClosestCharacter(std::vector<Character> entityList) {
 	
 
 	for (size_t i = 0; i < entityList.size(); i++) {
+		if (!entityList[i].isValidCharacter()) {
+			continue;
+		}
+
 		testingDistance = Aimbot::getDistanceToPlayer(entityList[i]);
 		if (testingDistance < shortestDistance) {
 			shortestDistance = testingDistance;
